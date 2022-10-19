@@ -24,25 +24,25 @@
    - 选择一个工作区名称，例如，主网为“mainnet”，测试网为“testnet”，等等。 **注意**：这定义了 Terraform 工作空间名称，该名称又用于形成资源名称。
    </br>
 
-        ```bash
-        export WORKSPACE=mainnet
-        ```
+    ```bash
+    export WORKSPACE=mainnet
+    ```
     </br>
     
    - 为工作区创建一个目录
     </br>
   
-        ```bash
-        mkdir -p ~/$WORKSPACE
-        ```
+    ```bash
+    mkdir -p ~/$WORKSPACE
+    ```
     </br>
 
    - 为您的节点选择一个用户名，例如“alice”
     </br>
 
-        ```bash
-        export USERNAME=alice
-        ```
+    ```bash
+    export USERNAME=alice
+    ```
     </br>
 
 2. 创建一个blob存储容器，用于在Azure上存储Terraform状态，你可以在Azure用户界面上或通过命令来完成。
