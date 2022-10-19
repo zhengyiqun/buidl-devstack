@@ -90,7 +90,9 @@
         validator_name = "<Name of your validator>"
     }
     ```
+    
     有关完整的自定义选项，请参阅变量文件 [here](https://github.com/aptos-labs/aptos-core/blob/main/terraform/aptos-node/azure/variables.tf), 和 [Helm values](https://github.com/aptos-labs/aptos-core/blob/main/terraform/helm/aptos-node/values.yaml).
+    
     </br>
 
 5. 在 `main.tf` 文件的同一目录中初始化 Terraform。
@@ -99,6 +101,7 @@
     terraform init
     ```
     这将为您下载所有 Terraform 依赖项，位于当前工作目录的 `.terraform` 文件夹中。
+
     </br>
 
 6. 创建一个新的 Terraform 工作区以隔离您的环境：
