@@ -171,8 +171,6 @@
       --full-node-host $FULLNODE_ADDRESS:6182 \
       --stake-amount 100000000000000
     ```
-    </br>
-
     这将在 `~/$WORKSPACE/$USERNAME` 目录中创建两个 YAML 文件：`owner.yaml` 和 `operator.yaml`。
 
     </br>
@@ -210,6 +208,8 @@
     > **注意**
     >
     > `-e1`后缀指的是年代号。如果你改变了年代号，确保在创建秘密时与之相符
+
+    </br>
 
 15. 检查所有 pod 是否都在运行
     </br>
