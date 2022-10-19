@@ -90,7 +90,7 @@
         validator_name = "<Name of your validator>"
     }
     ```
-    
+
     有关完整的自定义选项，请参阅变量文件 [here](https://github.com/aptos-labs/aptos-core/blob/main/terraform/aptos-node/azure/variables.tf), 和 [Helm values](https://github.com/aptos-labs/aptos-core/blob/main/terraform/helm/aptos-node/values.yaml).
     
     </br>
@@ -119,6 +119,7 @@
     terraform apply
     ```
     这可能需要一段时间来完成（约20分钟），Terraform将在你的Azure账户中创建所有资源。
+
     </br>
 
 8. 一旦terraform应用完成，你可以检查这些资源是否被创建
@@ -155,3 +156,70 @@
     > **注意**
     >
     > 将您的private-keys.yaml备份到安全的地方。这些密钥对于你建立节点的所有权非常重要。不要与任何人分享私人密钥.
+
+    </br>
+
+11. 配置验证者信息
+    </br>
+    
+    ```bash
+    aptos genesis set-validator-configuration \
+      --local-repository-dir ~/$WORKSPACE \
+      --username $USERNAME \
+      --owner-public-identity-file ~/$WORKSPACE/keys/public-keys.yaml \
+      --validator-host $VALIDATOR_ADDRESS:6180 \
+      --full-node-host $FULLNODE_ADDRESS:6182 \
+      --stake-amount 100000000000000
+    ```
+    </br>
+
+    这将在 `~/$WORKSPACE/$USERNAME` 目录中创建两个 YAML 文件：`owner.yaml` 和 `operator.yaml`。
+
+    </br>
+
+12. 按照[Node Files](/nodes/node-files.md)页面上的下载命令，下载以下文件。
+    - `genesis.blob`
+    - `waypoint.txt`
+    </br>
+
+13. **总结：** 总结一下，在你的工作目录中，你应该有一个文件的列表。
+    - `main.tf`: 安装`aptos-node`模块的Terraform文件（来自步骤3和4）
+    - `keys` 文件夹包含:
+      - `public-keys.yaml`: 所有者账户、共识、网络的公钥（来自步骤10）.
+      - `private-keys.yaml`: 所有者账户、共识、网络的私钥（来自步骤10）.
+      - `validator-identity.yaml`: 用于设置验证者身份的私钥（来自步骤10）.
+      - `validator-full-node-identity.yaml`: 用于设置验证器全节点身份的私钥（来自步骤10）.
+    - `username` 文件夹包含: 
+      - `owner.yaml`: 定义了所有者、操作者和投票者的映射。它们都是测试模式下的相同账户（从第11步开始）.
+      - `operator.yaml`: 将用于验证器和fullnode的节点信息（来自步骤11）。
+    - `waypoint.txt`: 创世交易的航点（来自第12步）。
+    - `genesis.blob`: 包含有关框架、validatorSet 等所有信息的 genesis 二进制文件（来自第 12 步）
+    </br>
+
+14. 将 "genesis.blob"、"waypoint.txt "和身份文件作为secret部署到k8s集群。
+    </br>
+    ```bash
+    kubectl create secret generic ${WORKSPACE}-aptos-node-0-genesis-e1 \
+        --from-file=genesis.blob=genesis.blob \
+        --from-file=waypoint.txt=waypoint.txt \
+        --from-file=validator-identity.yaml=keys/validator-identity.yaml \
+        --from-file=validator-full-node-identity.yaml=keys/validator-full-node-identity.yaml
+    ```
+    </br>
+
+    > **注意**
+    >
+    > `-e1`后缀指的是年代号。如果你改变了年代号，确保在创建秘密时与之相符
+
+15. 检查所有 pod 是否都在运行
+    </br>
+    ```bash
+    kubectl get pods
+    NAME                                        READY   STATUS    RESTARTS   AGE
+    node1-aptos-node-0-fullnode-e9-0              1/1     Running   0          4h31m
+    node1-aptos-node-0-haproxy-7cc4c5f74c-l4l6n   1/1     Running   0          4h40m
+    node1-aptos-node-0-validator-0                1/1     Running   0          4h30m
+    ```
+    </br>
+
+现在你已经成功完成了节点的设置。请确保你已经设置了一台机器来运行验证器节点，以及第二台机器来运行验证器全节点。
