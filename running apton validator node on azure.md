@@ -27,7 +27,7 @@
         ```bash
         export WORKSPACE=mainnet
         ```
-        </br>
+    </br>
     
    - 为工作区创建一个目录
     </br>
@@ -35,7 +35,7 @@
         ```bash
         mkdir -p ~/$WORKSPACE
         ```
-        </br>
+    </br>
 
    - 为您的节点选择一个用户名，例如“alice”
     </br>
@@ -43,7 +43,7 @@
         ```bash
         export USERNAME=alice
         ```
-        </br>
+    </br>
 
 2. 创建一个blob存储容器，用于在Azure上存储Terraform状态，你可以在Azure用户界面上或通过命令来完成。
     </br>
