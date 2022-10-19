@@ -175,12 +175,18 @@
 
     </br>
 
-12. 按照[Node Files](/nodes/node-files.md)页面上的下载命令，下载以下文件。
+12. 按照下载命令，下载以下文件。
     - `genesis.blob`
+        ```bash
+        wget -O genesis.blob https://raw.githubusercontent.com/aptos-labs/aptos-networks/main/premainnet/genesis.blob
+        ```
     - `waypoint.txt`
+        ```bash
+        wget -O waypoint.txt https://raw.githubusercontent.com/aptos-labs/aptos-networks/main/premainnet/waypoint.txt
+        ```
     </br>
 
-13. **总结：** 总结一下，在你的工作目录中，你应该有一个文件的列表。
+13. **总结：** 在你的工作目录中，你应该有一个文件的列表。
     - `main.tf`: 安装`aptos-node`模块的Terraform文件（来自步骤3和4）
     - `keys` 文件夹包含:
       - `public-keys.yaml`: 所有者账户、共识、网络的公钥（来自步骤10）.
