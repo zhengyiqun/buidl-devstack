@@ -1,4 +1,4 @@
-[![Page Views Count](https://badges.toozhao.com/badges/01GSFZ458MZYX25P1GPRPV7VCV/green.svg)](https://badges.toozhao.com/stats/01GSFZ458MZYX25P1GPRPV7VCV "Get your own page views count badge on badges.toozhao.com")
+[![Page Views Count](https://badges.toozhao.com/badges/01GSFZ458MZYX25P1GPRPV7VCV/green.svg)](https://badges.toozhao.com/stats/01GSFZ458MZYX25P1GPRPV7VCV "View Count")
 
 # Web3Devops
 
