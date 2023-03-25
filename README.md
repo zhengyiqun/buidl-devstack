@@ -1,7 +1,7 @@
 [![Page Views Count](https://badges.toozhao.com/badges/01GSFZ458MZYX25P1GPRPV7VCV/green.svg)](https://badges.toozhao.com/stats/01GSFZ458MZYX25P1GPRPV7VCV "View Count")
 
-# Web3Devops
+# Web3DevStack
 
-**<p>我们是微软CSI（Micorosft China Strategic Incubator）团队，目前微软有孵化Startup项目的计划，如果大家有好的项目或者问题欢迎随时来跟我们聊一聊，我们很希望能和社区的开发者们一起探讨web3的新技术以及未来的发展方向，如果有机会合作并加入微软孵化计划还有免费的资源可以使用</p>**
+**<p>从2022年5月开始在微软CSI（Micorosft China Strategic Incubator）部门开始研究web3相关的技术，直到2023年3月团队解散（各种无奈）</p>**
 
-**<p>联系邮箱：xiaopingfeng@microsoft.com</p>**
+**<p>这部分是在CSI期间所做的关于WEB3的研究，包括在Azure上的基础架构拓扑图、基于Quorum的开发测试环境部署、SmartContract的Demo，以及一个真实项目在部署到azure时所遇到的问题等等</p>**
